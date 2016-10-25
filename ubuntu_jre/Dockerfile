@@ -5,8 +5,9 @@
 # http://www.eclipse.org/legal/epl-v10.html
 # Contributors:
 # Codenvy, S.A. - initial API and implementation
+# Terry Lee, terry.lee.m@gmail.com
 
-FROM ubuntu:14.04
+FROM ubuntu
 
 ENV JAVA_VERSION=8u65 \
     JAVA_VERSION_PREFIX=1.8.0_65

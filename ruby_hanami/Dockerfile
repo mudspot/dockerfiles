@@ -5,13 +5,14 @@
 # http://www.eclipse.org/legal/epl-v10.html
 # Contributors:
 # Codenvy, S.A. - initial API and implementation
+# Terry Lee, terry.lee.m@gmail.com
 
 FROM codenvy/ubuntu_jre
-ENV RAILS_VERSION 4.2.6
 ENV RUBY_MAJOR 2.3
-ENV RUBY_VERSION 2.3.0
-ENV RUBY_DOWNLOAD_SHA256 ba5ba60e5f1aa21b4ef8e9bf35b9ddb57286cb546aac4b5a28c71f459467e507
-ENV RUBYGEMS_VERSION 2.6.2
+ENV RUBY_VERSION 2.3.1
+ENV RUBY_DOWNLOAD_SHA256 b87c738cb2032bf4920fef8e3864dc5cf8eae9d89d8d523ce0236945c5797dcd
+ENV RUBYGEMS_VERSION 2.6.7
+ENV HANAMI_VERSION 0.8.0
 
 USER root
 # skip installing gem documentation
@@ -52,7 +53,7 @@ RUN cd /usr/src/ruby \
     && sudo rm -r /usr/src/ruby
 
 
-ENV BUNDLER_VERSION 1.11.2
+ENV BUNDLER_VERSION 1.13.6
 
 RUN sudo gem install bundler --version "$BUNDLER_VERSION"
 
@@ -72,7 +73,7 @@ RUN sudo apt-get update && sudo apt-get install -y nodejs --no-install-recommend
 # see http://guides.rubyonrails.org/command_line.html#rails-dbconsole
 RUN sudo apt-get update && sudo apt-get install -y mysql-client postgresql-client sqlite3 --no-install-recommends && sudo rm -rf /var/lib/apt/lists/*
 
-RUN sudo gem install rails --version "$RAILS_VERSION"
+RUN sudo gem install hanami --version "$HANAMI_VERSION"
 
 EXPOSE 3000
 WORKDIR /projects
